@@ -4,6 +4,7 @@ package com.example.VUTTR_startideia.controller;
 import com.example.VUTTR_startideia.model.dto.MessageResponseDTO;
 import com.example.VUTTR_startideia.model.entity.Tool;
 import com.example.VUTTR_startideia.repository.ToolRepository;
+import com.example.VUTTR_startideia.service.ToolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -26,6 +27,9 @@ public class ToolController {
     @Autowired
     private ToolRepository toolRepository;
 
+    @Autowired
+    private ToolService toolService;
+
     @GetMapping()
     public List<Tool> listarTodasTools(){
         return toolRepository.findAll();
@@ -44,10 +48,10 @@ public class ToolController {
     }
 
     @PostMapping()
-    public MessageResponseDTO criarProduto(@RequestBody Tool tool) {
+    public MessageResponseDTO criarTool(@RequestBody Tool tool) {
         Tool toolSalvo = toolRepository.save(tool);
         return MessageResponseDTO.builder()
-                .message("Produto criado " + toolSalvo.getDsTool())
+                .message("Tool criado " + toolSalvo.getDsTool())
                 .build();
     }
 

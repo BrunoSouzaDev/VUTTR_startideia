@@ -21,16 +21,16 @@ public class Tool {
     @Column(name="id_tool")
     private Long idTool;
 
-    @Column(name="title")
+    @Column(name="toolTitle")
     private String title;
 
-    @Column(name="link")
+    @Column(name="toolLink")
     private String link;
 
     @Column(name="dsTool")
     private String dsTool;
 
-    @Column(name="tags")
+    @Column(name="toolTags")
     private String tags;
 
 }
