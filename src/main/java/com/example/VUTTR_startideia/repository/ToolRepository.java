@@ -14,10 +14,10 @@ public class ToolRepository extends JpaRepository<Tool, Long> {
 
     public List<Tool> findByDsTollIgnoreCaseContaining(String dsTool);
 
-    @Query(value = "select * from produto where ds_produto like '%:dsTool%'", nativeQuery = true)
+    @Query(value = "select * from tool where ds_tool like '%:dsTool%'", nativeQuery = true)
     public List<Tool> findContainingDsProduto(@Param("dsTool")String dsTool);
 
-    @Query("select p.idTool from produto p")
+    @Query("select p.idTool from tool p")
     public List<Long> buscarIdsUtilizados();
 
 }
