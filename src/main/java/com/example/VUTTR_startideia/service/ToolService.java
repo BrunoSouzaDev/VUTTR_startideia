@@ -5,6 +5,8 @@ import com.example.VUTTR_startideia.repository.ToolRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+
+
 import java.util.Optional;
 
 @Service
@@ -25,4 +27,5 @@ public class ToolService {
     public void delete(Long id) {
         toolRepository.deleteById(id);
     }
+
 }

@@ -13,7 +13,7 @@ import javax.persistence.GenerationType;
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
-@Entity(name="tb_tools")
+@Entity(name="Tools")
 public class Tool {
 
     @Id
@@ -21,16 +21,28 @@ public class Tool {
     @Column(name="id_tool")
     private Long idTool;
 
-    @Column(name="toolTitle")
+    @Column(name="tool_title")
     private String title;
 
-    @Column(name="toolLink")
+    @Column(name="tool_link")
     private String link;
 
-    @Column(name="dsTool")
+    @Column(name="ds_tool")
     private String dsTool;
 
-    @Column(name="toolTags")
+    @Column(name="tool_tags")
     private String tags;
+//
+//    public String tags() {
+//        return tags;
+//    }
+//
+//    public String[] getTags() {
+//        return tags.split(" ");
+//    }
+//
+//    public void setTags(String tags) {
+//        this.tags = tags;
+//    }
 
 }

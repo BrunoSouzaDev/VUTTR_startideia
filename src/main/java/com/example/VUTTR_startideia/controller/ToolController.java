@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tools")
@@ -46,6 +48,15 @@ public class ToolController {
         List<Tool> lista = toolRepository.findAll(example);
         return ResponseEntity.ok(lista);
     }
+
+//    @GetMapping("tools")
+//    public List<Tool> findByTag(@RequestParam(name="tag") String tag) {
+//        List<Tool> toolsTaged = toolRepository.findAll()
+//                .stream()
+//                .filter(x -> x.getTags().contains(tag))
+//                .collect(Collectors.toList());
+//        return (List<Tool>) ResponseEntity.ok(toolsTaged);
+//    }
 
     @PostMapping()
     public MessageResponseDTO criarTool(@RequestBody Tool tool) {

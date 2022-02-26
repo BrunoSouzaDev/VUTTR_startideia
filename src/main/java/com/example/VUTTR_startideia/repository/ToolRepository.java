@@ -2,24 +2,31 @@ package com.example.VUTTR_startideia.repository;
 
 
 import com.example.VUTTR_startideia.model.entity.Tool;
+import org.springframework.data.domain.Page;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
-import org.springframework.data.repository.query.Param;
 import org.springframework.stereotype.Repository;
+import org.springframework.data.domain.Pageable;
 
 import java.util.List;
 
 @Repository
 public interface ToolRepository extends JpaRepository<Tool, Long> {
 
-    public List<Tool> findByDsTool(String dsTool);
 
-    public List<Tool> findByDsTollIgnoreCaseContaining(String dsTool);
+//    by id
+    @Query("select u from Tool u where u.id = ?1")
+    Tool findByIdTool(Long id);
 
-    @Query(value = "select * from tool where ds_tool like '%:dsTool%'", nativeQuery = true)
-    public List<Tool> findContainingDsTool(@Param("dsTool")String dsTool);
+//    by tag
+    @Query(value = "SELECT * FROM tb_tool WHERE unaccent(tags) ilike unaccent('%' || ?1 || '%')",
+            nativeQuery = true)
+    Page<Tool> findByTag(String tag, Pageable pageable);
 
-    @Query("select p.idTool from tool p")
-    public List<Long> buscarIdsUtilizados();
+//    all tools
+    @Query(value = "SELECT * FROM tb_tool",
+            nativeQuery = true)
+    Page<Tool> findAllTool(Pageable pageable);
+
 
 }
