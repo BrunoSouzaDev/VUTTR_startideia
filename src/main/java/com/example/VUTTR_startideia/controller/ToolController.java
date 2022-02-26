@@ -2,6 +2,7 @@
 package com.example.VUTTR_startideia.controller;
 
 import com.example.VUTTR_startideia.model.dto.MessageResponseDTO;
+import com.example.VUTTR_startideia.model.dto.ToolDTO;
 import com.example.VUTTR_startideia.model.entity.Tool;
 import com.example.VUTTR_startideia.repository.ToolRepository;
 import com.example.VUTTR_startideia.service.ToolService;
@@ -17,9 +18,11 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.Optional;
 import java.util.stream.Collectors;
 
 @RestController
@@ -49,27 +52,39 @@ public class ToolController {
         return ResponseEntity.ok(lista);
     }
 
+    @GetMapping("/{id}")
+    public ResponseEntity findById(@PathVariable Long id){
+        Optional<Tool> tool = toolRepository.findById(id);
+        return tool.isPresent() ?
+                ResponseEntity.ok().body(tool.get()) :
+                ResponseEntity.notFound().build();
+    }
+
 //    @GetMapping("tools")
-//    public List<Tool> findByTag(@RequestParam(name="tag") String tag) {
-//        List<Tool> toolsTaged = toolRepository.findAll()
-//                .stream()
-//                .filter(x -> x.getTags().contains(tag))
-//                .collect(Collectors.toList());
-//        return (List<Tool>) ResponseEntity.ok(toolsTaged);
+//    public List<Tool> findByTag(@RequestParam(name="tag") String tag){
+//        List<Tool> tollsTaged = toolRepository.getToolByTag(tag);
+//        return tollTaged;
 //    }
 
     @PostMapping()
+    @ResponseStatus(HttpStatus.CREATED)
     public MessageResponseDTO criarTool(@RequestBody Tool tool) {
+        System.out.println("Tool="+tool.getTitle());
+        System.out.println("Tool="+tool.getDsTool());
+        System.out.println("Tool="+tool.getLink());
+        System.out.println("Tool="+tool.getTags());
         Tool toolSalvo = toolRepository.save(tool);
         return MessageResponseDTO.builder()
-                .message("Tool criado " + toolSalvo.getDsTool())
+                .message("Tool criado " + toolSalvo.getTitle())
                 .build();
     }
 
     @DeleteMapping(value="/{id}")
+    @ResponseStatus(value = HttpStatus.NO_CONTENT)
     public ResponseEntity<Tool> delete(@PathVariable Long id) {
         toolService.delete(id);
-        return ResponseEntity.status(HttpStatus.OK).build();
+        return ResponseEntity.status(HttpStatus.NO_CONTENT).build();
     }
+
 
 }

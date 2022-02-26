@@ -1,7 +1,9 @@
 package com.example.VUTTR_startideia.model.dto;
 
 import lombok.AllArgsConstructor;
+import lombok.NoArgsConstructor;
 
+@NoArgsConstructor
 @AllArgsConstructor
 public class ToolDTO {
 
@@ -11,7 +13,7 @@ public class ToolDTO {
 
     private String link;
 
-    private String description;
+    private String dsTool;
 
     private String tags;
 
@@ -26,4 +28,5 @@ public class ToolDTO {
     public void setTags(String tags) {
         this.tags = tags;
     }
+
 }
