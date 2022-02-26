@@ -1,12 +1,11 @@
 package com.example.VUTTR_startideia.service;
 
-import com.example.VUTTR_startideia.model.entity.Tool;
 import com.example.VUTTR_startideia.repository.ToolRepository;
+import com.example.VUTTR_startideia.model.entity.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 
-import java.util.List;
 import java.util.Optional;
 
 @Service

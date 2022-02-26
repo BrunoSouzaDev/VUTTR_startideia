@@ -1,11 +1,10 @@
 
 package com.example.VUTTR_startideia.controller;
 
-import com.example.VUTTR_startideia.model.dto.MessageResponseDTO;
-import com.example.VUTTR_startideia.model.dto.ToolDTO;
-import com.example.VUTTR_startideia.model.entity.Tool;
 import com.example.VUTTR_startideia.repository.ToolRepository;
 import com.example.VUTTR_startideia.service.ToolService;
+import com.example.VUTTR_startideia.model.dto.MessageResponseDTO;
+import com.example.VUTTR_startideia.model.entity.Tool;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Example;
 import org.springframework.data.domain.ExampleMatcher;
@@ -23,7 +22,6 @@ import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/tools")
@@ -60,11 +58,11 @@ public class ToolController {
                 ResponseEntity.notFound().build();
     }
 
-//    @GetMapping("tools")
-//    public List<Tool> findByTag(@RequestParam(name="tag") String tag){
-//        List<Tool> tollsTaged = toolRepository.getToolByTag(tag);
-//        return tollTaged;
-//    }
+    @GetMapping()
+    public List<Tool> findByTagCustom(@RequestParam(name="tag") String tag){
+        List<Tool> tollsTaged = toolRepository.findByTag(tag);
+        return tollsTaged;
+    }
 
     @PostMapping()
     @ResponseStatus(HttpStatus.CREATED)
