@@ -14,6 +14,7 @@ Proposto pela empresa a criação de uma API com requisições ao banco de dados
 <li><a href="https://aws.amazon.com/pt/">AWS</a></li>
 <li><a href="https://swagger.io/">Swagger</a></li>
 <li><a href="https://spring.io/projects/spring-data-jpa">Jpa</a></li>
+<li><a href="https://www.heroku.com">Heroku</a></li>
 </ul>
 
 <hr>
@@ -27,6 +28,7 @@ Para iniciar o projeto é necessário clonar o repositório e importar para IDE(
 <li><a href="https://www.mysql.com/">MySql</a></li>
 </ul>
 
+Ou voce pode testar ela na nuvem (heroku) <a href="https://vuttr-startideia-api.herokuapp.com/swagger-ui.html#/tool45controller">aqui</a>
 
 <h5>EndPoints</h5>
 
