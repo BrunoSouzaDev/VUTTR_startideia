@@ -42,6 +42,17 @@ Ou voce pode testar ela na nuvem (heroku) <a href="https://vuttr-startideia-api.
 
 `POST /tools` - Pequena observação sobre este item, foi solicitado que as tags iriam ser passadas como um Array de string no corpo do JSON, porem optei pela forma de produção que seria utilizar uma segunda tabela onde existiram as tags em forma de objeto. Acredito que desta forma seria mais fácil manipular os dados.
 
+```
+{
+    "title": "fastify",
+    "link": "https://www.fastify.io/",
+    "dsTool": "Extremely fast and simple, low-overhead web framework for NodeJS. Supports HTTP2.",
+    "tags":[{"name":"web"}, {"name":"http2"}, {"name":"framework"},{"name":"node"},{"name":"localhost"},{"name":"https"}]
+}
+```
+
+Formato que deve ser passado no endpoint de POST
+
 
 
 
