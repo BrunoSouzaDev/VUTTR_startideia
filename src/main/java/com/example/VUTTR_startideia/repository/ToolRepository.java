@@ -8,25 +8,26 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-
 @Repository
 public interface ToolRepository extends JpaRepository<Tool, Long> {
 
     @Query(
             value = "select "
-                    +"Tools.id_tool, "
-                    +"Tools.ds_tool, "
-                    +"Tools.tool_link, "
-                    +"Tools.tool_title, "
-                    +"Tags.id_tag, "
-                    +"Tags.nome_tag, "
+                    +"tools.id_tool, "
+                    +"tools.ds_tool, "
+                    +"tools.tool_link, "
+                    +"tools.tool_title, "
+                    +"tools_tags.tool_id, "
+                    +"tools_tags.tag_id, "
+                    +"tags.id_tag, "
+                    +"tags.nome_tag "
                     +"from tools "
                     +"inner join tools_tags "
                     +"on tools_tags.tool_id = tools.id_tool "
                     +"inner join tags "
-                    +"on tools_tags.tag_id = tag.id_tag "
+                    +"on tools_tags.tag_id = tags.id_tag "
                     +"where tags.nome_tag LIKE %:tag% ",
             nativeQuery = true
     )
     List<Tool> findByTag(@Param("tag")String tag);
-        }
+}

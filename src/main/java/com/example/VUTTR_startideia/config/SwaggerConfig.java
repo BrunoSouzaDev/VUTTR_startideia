@@ -34,8 +34,8 @@ public class SwaggerConfig {
                 "API REST de VUTTR",
                 "1.0",
                 "Temos de Serviço",
-                new Contact("Bruno Souza","",
-                        ""),
+                new Contact("Bruno Souza","https://github.com/BrunoSouzaDev/VUTTR_startideia",
+                        "bruno_dps@hotmail.com"),
                 "","",
                 new ArrayList<VendorExtension>()
         );
