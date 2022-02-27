@@ -33,7 +33,7 @@ public class ToolController {
     @Autowired
     private ToolService toolService;
 
-    @GetMapping()
+    @GetMapping("/all")
     public List<Tool> listarTodasTools(){
         return toolRepository.findAll();
     }
@@ -60,6 +60,7 @@ public class ToolController {
 
     @GetMapping()
     public List<Tool> findByTagCustom(@RequestParam(name="tag") String tag){
+        System.out.println(tag);
         List<Tool> tollsTaged = toolRepository.findByTag(tag);
         return tollsTaged;
     }
