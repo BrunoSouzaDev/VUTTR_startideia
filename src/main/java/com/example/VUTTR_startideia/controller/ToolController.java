@@ -38,7 +38,7 @@ public class ToolController {
     private ToolService toolService;
 
     @GetMapping()
-    @ApiOperation(value="Lista todas as tool do usuário")
+    @ApiOperation(value="Lista todas as tool do usuário ou por tag como ?tag=node")
     public ResponseEntity find(@RequestParam(name="tag", defaultValue = "0") String tag) {
         List<Tool> lista;
 
